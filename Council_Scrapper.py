@@ -5,6 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from datetime import datetime
 import os
 import re
+import sys
 ''' 
 Downloads pdf from city of Phoenix meetings
 Shoudl be lauched weekly
@@ -33,7 +34,7 @@ while pagertext!='Page 12 of 12':
 	pager= soup.find('span',attrs={'class':"ms-promlink-button-inner"})
 	#print ('window opened')
 	pagertext=pager.text
-	print(pager.text)
+	print(pager.text) #prints current page
 	xpath='/html/body/form/div[4]/div[2]/div[3]/span/div[1]/div/div/div/div/div[3]/div/div/div/div/div/div[2]/div[1]/a[2]'
 	btn=driver.find_element_by_xpath(xpath)
 	btn.click()
@@ -85,10 +86,9 @@ while pagertext!='Page 12 of 12':
 		if os.path.exists('/Users/michael/Google Drive/CityCouncil/'+filename+'.pdf'): #Checks if file has already been downloaded
 			print(filename+'.pdf already exist')
 			"""
-			alreadyexist=+1
-			if alreadyexist>3
-				sys.exit()
+			TODO do a check that ends program
 			"""
+			
 		else:
 			with open('/Users/michael/Google Drive/CityCouncil/'+filename+'.pdf', 'wb') as f:
 	   			f.write(downloadfiles.content)
