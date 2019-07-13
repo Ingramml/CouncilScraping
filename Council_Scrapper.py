@@ -76,14 +76,19 @@ while pagertext!='Page 12 of 12':
 			formated_date=datetime.strptime(date, '%m/%d/%Y').strftime('%Y%m%d') #converts date to yyyymmdd format
 			filename=formated_date+toparse
 		filename=filename.strip()
+		if filename[8]!=' ':
+			K=filename.split(filename[8])
+			filename=K[0]+' '+filename[8]+K[1]
 
 		downloadfiles=requests.get('https://www.phoenix.gov'+docs)	#creates the pdfs to be documented
 		alreadyexist=0
 		if os.path.exists('/Users/michael/Google Drive/CityCouncil/'+filename+'.pdf'): #Checks if file has already been downloaded
 			print(filename+'.pdf already exist')
+			"""
 			alreadyexist=+1
 			if alreadyexist>3
 				sys.exit()
+			"""
 		else:
 			with open('/Users/michael/Google Drive/CityCouncil/'+filename+'.pdf', 'wb') as f:
 	   			f.write(downloadfiles.content)
