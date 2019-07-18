@@ -34,24 +34,8 @@ while pagertext!='Page 12 of 12':
 	pager= soup.find('span',attrs={'class':"ms-promlink-button-inner"})
 	#print ('window opened')
 	pagertext=pager.text
-	print(pager.text) #prints current page
-	xpath='/html/body/form/div[4]/div[2]/div[3]/span/div[1]/div/div/div/div/div[3]/div/div/div/div/div/div[2]/div[1]/a[2]'
-	btn=driver.find_element_by_xpath(xpath)
-	btn.click()
-	pdfs = soup.findAll('a',attrs={'class': 'ico pdf'})
 	
-	btn=driver.find_element_by_xpath(xpath)
-	btn.click()
-	archive_url = driver.current_url
-
-	driver.get(archive_url)
-	html = driver.page_source
-
-	#create beautiful-soup object 
-	soup = BeautifulSoup(html,'html.parser')
-
-	# find all links on web-page 
-	pdfs = soup.findAll('a',attrs={'class': 'ico pdf'})
+	print(pager.text) #prints current page
 	for x in pdfs:
 		"""
 		Creates naming conventions for files
@@ -88,11 +72,14 @@ while pagertext!='Page 12 of 12':
 			"""
 			TODO do a check that ends program
 			"""
-			
 		else:
 			with open('/Users/michael/Google Drive/CityCouncil/'+filename+'.pdf', 'wb') as f:
 	   			f.write(downloadfiles.content)
 			print(filename+ ' has been downloaded')
+	xpath='/html/body/form/div[4]/div[2]/div[3]/span/div[1]/div/div/div/div/div[3]/div/div/div/div/div/div[2]/div[1]/a[2]'
+	btn=driver.find_element_by_xpath(xpath)
+	btn.click()
+
 print('Download(s) complete')
 driver.close()
 """
