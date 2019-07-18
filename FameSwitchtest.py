@@ -30,11 +30,13 @@ while pagertext!='Page 12 of 12':
 	pager= soup.find('span',attrs={'class':"ms-promlink-button-inner"})
 	#print ('window opened')
 	pagertext=pager.text
-	#print(pager.text)
+	print(pager.text)
 	xpath='/html/body/form/div[4]/div[2]/div[3]/span/div[1]/div/div/div/div/div[3]/div/div/div/div/div/div[2]/div[1]/a[2]'
 	btn=driver.find_element_by_xpath(xpath)
 	btn.click()
 	pdfs = soup.findAll('a',attrs={'class': 'ico pdf'})
+	for x in pdfs:
+		print(str(x.get('title')))
 	
 	btn=driver.find_element_by_xpath(xpath)
 	btn.click()
