@@ -12,7 +12,8 @@ Nameing convetion is YYYYMMDD Meeting type Document type
 	exampel 20190503 Formal Agenda
 TODO refine naming convention
 '''
-#Changes to streamline code
+
+#Changes to streamline code no changes made
 # specify the URL of the archive here 
 archive_url = "https://www.phoenix.gov/cityclerk/publicmeetings/city-council-meetings#"
 driver = webdriver.Firefox()
